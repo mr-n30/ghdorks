@@ -2,10 +2,10 @@
 "api_hash" "api_id" "user_phone"
 api_key
 api_token:
-"app.config['secret_key']" extension:py
+"app.config['secret_key']" path:**/.py
 app.config['sqlalchemy_database_uri']
 app_id
-"app.secret_key" extension=py
+"app.secret_key" language:py
 auth
 authentication
 auth_key
@@ -15,7 +15,7 @@ aws_access_key
 "aws_access_key_id" "aws_secret_access_key"
 aws_secret
 aws_secret_key
-"-----begin certificate-----" extension:pem
+"-----begin certificate-----" path:**/.pem
 "-----begin encrypted private key-----"
 "-----begin private key-----"
 "-----begin rsa private key-----"
@@ -32,95 +32,91 @@ docker_hub_password
 elasticsearch_password
 email
 exp_password
-extension:avastlic
-extension:avastlic "support.avast.com"
-extension:dbeaver-data-sources.xml
-extension:json api.forecast.io
-extension:json cloud.redislabs.com
-extension:json googleusercontent client_secret
-extension:json mongolab.com
-extension:pem private
-extension:ppk private
-extension:sql mysql dump
-extension:sql mysql dump password
-extension:yaml cloud.redislabs.com
-extension:yaml mongolab.com
-filename:.bash_history
-filename:.bash_history <domain name>
-filename:.bash_profile aws
-filename:.bashrc mailchimp
-filename:.bashrc password
-filename:cccam.cfg
-filename:config irc_pass
-filename:config.json auths
-filename:config.php dbpasswd
-filename:config.php pass
-filename:configuration.php jconfig password
-filename:connections.xml
-filename:credentials aws_access_key_id
-filename:.cshrc
-filename:database
-filename:dbeaver-data-sources.xml
-filename:deployment-config.json
-filename:dhcpd.conf
-filename:discord_backup_codes.txt
-filename:.dockercfg auth
-filename:.env db_username not homestead
-filename:.env mail_host=smtp.gmail.com
-filename:.esmtprc password
-filename:express.conf path:.openshift
-filename:filezilla.xml pass
-filename:.ftpconfig
-filename:.git-credentials
-filename:github-recovery-codes.txt
-filename:gitlab-recovery-codes.txt
-filename:.history
-filename:.htpasswd
-filename:hub oauth_token
-filename:idea14.key
-filename:id_rsa or filename:id_dsa
-filename:jupyter_notebook_config.json
-filename:logins.json
-filename:manifest.xml
-filename:master.key path:config
-filename:mega-recoverykey.txt
-filename:.netrc password
-filename:_netrc password
-filename:.npmrc _auth
-filename:passwd path:etc
-filename:passwords.doc
-filename:passwords.txt
-filename:.pgpass
-filename:prod.exs not prod.secret.exs
-filename:prod.secret.exs
-filename:proftpdpasswd
-filename:recentservers.xml pass
-filename:.remote-sync.json
-filename:robomongo.json
-filename:.s3cfg
-filename:secrets.yml password
-filename:server.cfg rcon password
-filename:settings.py secret_key
-filename:sftp-config.json
-filename:sftp.json path:.vscode
-filename:shadow path:etc
-filename:.sh_history
-filename:sshd_config
-filename:travis.yml
-filename:.tugboat not _tugboat
-filename:ventrilo_srv.ini
-filename:vim_settings.xml
-filename:webservers.xml
-filename:wp-config.php
+path:**/.avastlic
+path:**/.avastlic "support.avast.com"
+path:**/.dbeaver-data-sources.xml
+path:**/.json api.forecast.io
+path:**/.json cloud.redislabs.com
+path:**/.json googleusercontent client_secret
+path:**/.json mongolab.com
+path:**/.pem private
+path:**/.ppk private
+path:**/.sql mysql dump
+path:**/.sql mysql dump password
+path:**/.yaml cloud.redislabs.com
+path:**/.yaml mongolab.com
+path:**/.bash_history
+path:**/.bash_history <domain name>
+path:**/.bash_profile aws
+path:**/.bashrc mailchimp
+path:**/.bashrc password
+path:**/cccam.cfg
+path:**/config irc_pass
+path:**/config.json auths
+path:**/config.php dbpasswd
+path:**/config.php pass
+path:**/configuration.php jconfig password
+path:**/connections.xml
+path:**/credentials aws_access_key_id
+path:**/.cshrc
+path:**/database
+path:**/dbeaver-data-sources.xml
+path:**/deployment-config.json
+path:**/dhcpd.conf
+path:**/discord_backup_codes.txt
+path:**/.dockercfg auth
+path:**/.env db_username not homestead
+path:**/.env mail_host=smtp.gmail.com
+path:**/.esmtprc password
+path:**/express.conf path:.openshift
+path:**/filezilla.xml pass
+path:**/.ftpconfig
+path:**/.git-credentials
+path:**/github-recovery-codes.txt
+path:**/gitlab-recovery-codes.txt
+path:**/.history
+path:**/.htpasswd
+path:**/hub oauth_token
+path:**/idea14.key
+path:**/id_rsa or path:**/id_dsa
+path:**/jupyter_notebook_config.json
+path:**/logins.json
+path:**/manifest.xml
+path:**/master.key path:config
+path:**/mega-recoverykey.txt
+path:**/.netrc password
+path:**/_netrc password
+path:**/.npmrc _auth
+path:**/passwd path:etc
+path:**/passwords.doc
+path:**/passwords.txt
+path:**/.pgpass
+path:**/prod.exs not prod.secret.exs
+path:**/prod.secret.exs
+path:**/proftpdpasswd
+path:**/recentservers.xml pass
+path:**/.remote-sync.json
+path:**/robomongo.json
+path:**/.s3cfg
+path:**/secrets.yml password
+path:**/server.cfg rcon password
+path:**/settings.py secret_key
+path:**/sftp-config.json
+path:**/sftp.json path:.vscode
+path:**/shadow path:etc
+path:**/.sh_history
+path:**/sshd_config
+path:**/travis.yml
+path:**/.tugboat not _tugboat
+path:**/ventrilo_srv.ini
+path:**/vim_settings.xml
+path:**/webservers.xml
+path:**/wp-config.php
 firebase_api_token
 ftp_login
 ftp_password
-fullname:firstname lastname (fullname:<name> <surname>)
+fullname:firstname lastname
 gh_auth_token
-gihub dorks for finding api keys, tokens and passwords
-github dorks for finding information using dates
-github dorks for finding information using extension
-github dorks for finding usernames
 heroku_api_key language:json
 heroku_api_key language:shell
 homebrew_github_api_token language:shell
@@ -129,12 +125,9 @@ homebrew_github_api_token language:shell
 "https://hooks.slack.com/"
 "https://hooks.slack.com/services/"
 id_rsa_pub
-in:email (data in:email)
-in:login (<username> in:login)
-in:name (<username> in:name)
 jdbc_user
 jekyll_github_token
-jsforce extension:js conn.login
+jsforce path:**/.js conn.login
 jwt_secret
 language:html password
 language:java api
@@ -146,23 +139,23 @@ language:sql username
 mailchimp_api_key
 manifest_app_token
 .mlab.com password
-msg nickserv identify filename:config
+msg nickserv identify path:**/config
 mysql_password
 netlify_api_key
 npm_api_token
 oauth
 oauth_clent_id
 oauth_client_secret
-org:name (org:google type:users)
+org:name OR org:google AND type:users
 ossrh_jira_password
 otp
-"package com.whatsapp" extension:java
+"package com.whatsapp" path:**/java
 passcode
 password
 password hash
 passwordtravis
-path:sites databases password
-pt_token language:bash
+path:**/sites databases password
+pt_token language:shell
 rds.amazonaws.com password
 s3_access_key
 secret
@@ -177,11 +170,11 @@ travis_secure_env_vars
 twilio_token
 urban_master_secret
 user auth
-user:name (user:admin)
+user:name OR user:admin
 user_pass
 user_password
 vip_github_deploy_key
-[wfclient] password= extension:ica
+[wfclient] password= path:**/.ica
 wordpress_db_password
 "xoxp-"
 xoxp or xoxb
