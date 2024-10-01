@@ -47,9 +47,10 @@ def request_github(url: str) -> float:
 
         if match is None:
             print(f"[ERROR] No match found, check manually: {url}")
-            return 0.0
+            return 0
 
-        return float(match.group(1))
+        if float(match.group(1)) > 0:
+            return match.group(0)
 
     except Exception as e:
         print(f"[ERROR] No match found, check manually: {url}")
@@ -67,13 +68,11 @@ def main() -> None:
                     dork = line.strip()
                     url = f"{github_url}{urllib.parse.quote(query)}%20{urllib.parse.quote(dork)}&type=code"
                     print(f"[INFO] Trying: {url}")
-                    result_count = request_github(url)
-                    if result_count > 0:
-                        result_string = f"[FOUND] {url} [Results: {result_count}] [Dork: {dork}]"
-                        print(result_string)
-                        if args.output:
-                            with open(args.output, "a") as o:
-                                o.write(f"{result_string}\n")
+                    result_string = f"[FOUND] {url} [Results: {request_github(url)}] [Dork: {dork}]"
+                    print(result_string)
+                    if args.output:
+                        with open(args.output, "a") as o:
+                            o.write(f"{result_string}\n")
 
                     if len(lines) - 1 == lines.index(line):
                         driver.quit()
