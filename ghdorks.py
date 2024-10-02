@@ -33,7 +33,7 @@ chrome_service = Service(args.chrome_driver)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 cookie = {"name": "user_session", "value": args.cookie}
 
-def request_github(url: str) -> float:
+def request_github(url: str) -> list:
     try:
         driver.get(url)
         driver.add_cookie(cookie)
@@ -46,15 +46,18 @@ def request_github(url: str) -> float:
         match = re.search(pattern, element_value)
 
         if match is None:
-            print(f"[ERROR] No match found, check manually: {url}")
+            print(f"[ERROR] An error occurred with the page. Check manually: {url}")
             return [False, 0]
 
         if float(match.group(1)) > 0:
-            return [True, match.group(0)]
+            return [True, match.group(1)]
 
     except Exception as e:
-        print(f"[ERROR] No match found, check manually: {url}")
-        return 0.0
+        print(f"[ERROR] An error occurred with the request. Check manually: {url}")
+        print(f"Exception: {e}")
+        return [False, 0]
+
+    return [False, 0]
 
 def main() -> None:
     github_url = "https://github.com/search?q="
@@ -68,13 +71,16 @@ def main() -> None:
                     dork = line.strip()
                     url = f"{github_url}{urllib.parse.quote(query)}%20{urllib.parse.quote(dork)}&type=code"
                     print(f"[INFO] Trying: {url}")
+
                     github_response = request_github(url)
-                    if gitub_response[0] == True:
+
+                    if github_response[0]:
                         result_string = f"[FOUND] {url} [Results: {github_response[1]}] [Dork: {dork}]"
                         print(result_string)
-                    if args.output:
-                        with open(args.output, "a") as o:
-                            o.write(f"{result_string}\n")
+
+                        if args.output:
+                            with open(args.output, "a") as o:
+                                o.write(f"{result_string}\n")
 
                     if len(lines) - 1 == lines.index(line):
                         driver.quit()
@@ -83,13 +89,13 @@ def main() -> None:
                     sleep(args.sleep)
     except KeyboardInterrupt:
         print("Cancelled...")
+        driver.quit()
         return
     except Exception as e:
         print(f"[ERROR] An error occurred with the request: {url}")
         pass
 
     return
-
 
 if __name__ == "__main__":
     main()
