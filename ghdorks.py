@@ -54,7 +54,6 @@ def request_github(url: str) -> list:
 
     except Exception as e:
         print(f"[ERROR] An error occurred with the request. Check manually: {url}")
-        print(f"Exception: {e}")
         return [False, 0]
 
     return [False, 0]
