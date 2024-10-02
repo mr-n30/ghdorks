@@ -6,5 +6,5 @@ Automate GitHub Dorks Recon
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python -h ghdorks.py
+./ghdorks.py -h
 ```
