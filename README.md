@@ -1,12 +1,14 @@
 # ghdorks
 Automate GitHub Dorks Recon
 
-# Installation Instructions
+# ghdorks.sh
+`ghdorks.sh` simply prints out the dork URL in the terminal so you can visit it in a browser.
+
+# Usage
+ghdorks.sh:
+```sh
+./ghdorks.sh -d dorks2.txt -t mytargetname
 ```
-git clone https://github.com/mr-n30/ghdorks.git
-cd ghdorks
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 ghdorks.py -h
-```
+
+# Thank You For Using!
+Feel free to send a pull request for more dorks to be added to dorks.txt / dorks2.txt. Thank you for using!
