@@ -24,6 +24,7 @@ Automate GitHub Dorks Recon
 - Retrieves the number of matches for each dork.
 - Handles rate-limiting gracefully and supports retries.
 - Saves results to a file if specified.
+- Prints out GitHub dork URLs directly to the terminal.
 
 ---
 
