@@ -2,8 +2,8 @@
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 -d <dorks_file> -t <target>"
-    echo "  -d  Path to the file containing dorks"
+    echo "Usage: $0 -f <dorks_file> -t <target>"
+    echo "  -f  Path to the file containing dorks"
     echo "  -t  Target string to search for"
     exit 1
 }
@@ -15,7 +15,7 @@ TARGET=""
 # Parse command-line arguments
 while getopts "d:t:h" opt; do
     case $opt in
-        d) DORKS="$OPTARG" ;;
+        f) DORKS="$OPTARG" ;;
         t) TARGET="$OPTARG" ;;
         h) usage ;;
         *) usage ;;
