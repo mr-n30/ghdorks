@@ -7,7 +7,7 @@ Automate GitHub Dorks Recon
 # Usage
 ghdorks.sh:
 ```sh
-./ghdorks.sh -d dorks2.txt -t mytargetname
+./ghdorks.sh -f dorks2.txt -t mytargetname
 ```
 
 # Thank You For Using!
