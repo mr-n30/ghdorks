@@ -13,7 +13,7 @@ DORKS=""
 TARGET=""
 
 # Parse command-line arguments
-while getopts "d:t:h" opt; do
+while getopts "f:t:h" opt; do
     case $opt in
         f) DORKS="$OPTARG" ;;
         t) TARGET="$OPTARG" ;;
