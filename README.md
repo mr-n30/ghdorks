@@ -47,6 +47,7 @@ python3 ghdorks.py -f dorks2.txt -t mytargetname -k your_github_api_key --output
 ```
 
 ---
+
 ## Thank You For Using!
 ```
 This version should now be complete without any issues. Let me know if this works for you!
