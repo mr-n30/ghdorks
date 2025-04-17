@@ -3,6 +3,7 @@ import time
 import argparse
 import requests
 from urllib.parse import quote
+from colorama import Fore, Style
 
 def main():
     # Set up argument parsing
@@ -64,9 +65,13 @@ def main():
             print(f"Error opening output file '{output_file}': {e}")
             return
 
-    def log_output(message):
+    def log_output(message, error=False):
         """Helper function to print and write output to the file if specified."""
-        print(message)
+        if error:
+            print(f"{Fore.RED}[ERROR]{Style.RESET_ALL}: {message}")
+            return
+
+        print(f"{Fore.GREEN}[DORK]{Style.RESET_ALL}: {message}")
         if output_fp:
             output_fp.write(message + "\n")
 
@@ -75,10 +80,10 @@ def main():
         with open(file_path, "r") as f:
             dorks = f.read().split()
     except FileNotFoundError:
-        log_output(f"Error: File '{file_path}' not found.")
+        print(f"Error: File '{file_path}' not found.")
         return
     except Exception as e:
-        log_output(f"Error reading file: {e}")
+        print(f"Error reading file: {e}")
         return
 
     headers = {
@@ -109,20 +114,20 @@ def main():
                     reset_time = response.headers.get("X-RateLimit-Reset")
                     if retry_after:
                         sleep_time = float(retry_after)
-                        log_output(f"[!] Rate limit hit. Retrying after {sleep_time} seconds...")
+                        print(f"[!] Rate limit hit. Retrying after {sleep_time} seconds...")
                     elif reset_time:
                         reset_epoch = int(reset_time)
                         current_time = int(time.time())
                         sleep_time = max(reset_epoch - current_time, 1)
-                        log_output(f"[!] Rate limit hit. Retrying at {reset_time} (in {sleep_time} seconds)...")
+                        print(f"[!] Rate limit hit. Retrying at {reset_time} (in {sleep_time} seconds)...")
                     else:
                         sleep_time = default_sleep
-                        log_output(f"[!] Rate limit hit. Retrying with default sleep of {sleep_time} seconds...")
+                        print(f"[!] Rate limit hit. Retrying with default sleep of {sleep_time} seconds...")
 
                     time.sleep(sleep_time)
                     retries += 1
                     if retries >= max_retries:
-                        log_output(f"[!] Maximum retries ({max_retries}) reached for dork '{dork}'. Moving to the next dork...")
+                        print(f"[!] Maximum retries ({max_retries}) reached for dork '{dork}'. Moving to the next dork...")
                         break
                     continue
 
@@ -133,18 +138,18 @@ def main():
                 result_count = data.get("total_count", 0)
 
                 # Print and write the output
-                output_message = f"[+] Dork: {dork}, Results: {result_count}\n{public_url}\n"
-                log_output(output_message)
-                success = True
+                if int(result_count) > 0:
+                    log_output(f"{dork}, Results: {result_count}\n{public_url}\n")
+                    success = True
 
             except requests.exceptions.RequestException as e:
-                log_output(f"Error querying for dork '{dork}': {e}")
+                log_output(f"Error querying for dork '{dork}': {e}", True)
                 retries += 1
                 if retries >= max_retries:
-                    log_output(f"[!] Maximum retries ({max_retries}) reached for dork '{dork}'. Moving to the next dork...")
+                    print(f"[!] Maximum retries ({max_retries}) reached for dork '{dork}'. Moving to the next dork...")
                     break
                 sleep_time = default_sleep * (2 ** retries)  # Exponential backoff
-                log_output(f"[!] Retrying in {sleep_time} seconds...")
+                print(f"[!] Retrying in {sleep_time} seconds...")
                 time.sleep(sleep_time)
 
     # Close the output file if opened
