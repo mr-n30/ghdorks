@@ -73,7 +73,10 @@ def main():
 
         print(f"{Fore.GREEN}[DORK]{Style.RESET_ALL}: {message}")
         if output_fp:
-            output_fp.write(message + "\n")
+            if error:
+                output_fp.write(f"{Fore.RED}[ERROR]{Style.RESET_ALL}: {message}" + "\n")
+                return
+            output_fp.write(f"{Fore.GREEN}[DORK]{Fore.RESET_ALL}: {message}" + "\n")
 
     # Read the file and process dorks
     try:
